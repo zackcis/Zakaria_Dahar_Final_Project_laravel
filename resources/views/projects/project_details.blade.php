@@ -205,13 +205,12 @@
                                 <input id="deadline" type="date" name="deadline" required>
                             </div>
 
-                            <div class="my-3 flex flex-col justify-center items-center">
+                            <div class="my-3 flex flex-col justify-center items-center hidden">
                                 <label for="project_id">Project</label>
                                 <select id="project_id" name="project_id">
-                                    <option value="">Click</option>
-                                    @foreach ($projects as $project)
-                                        <option value="{{ $project->id }}">{{ $project->title }}</option>
-                                    @endforeach
+
+                                    <option value="{{ $project->id }}">{{ $project->title }}</option>
+
                                 </select>
                             </div>
                             <div class="flex justify-end items-center gap-3">
