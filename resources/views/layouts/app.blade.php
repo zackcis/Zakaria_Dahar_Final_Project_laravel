@@ -36,7 +36,7 @@
         <!-- Page Content -->
         <main class="flex">
             <aside
-                class="flex flex-col w-64 h-screen px-4 py-8 overflow-y-auto bg-white border-r rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700">
+                class="flex flex-col w-64 min-h-screen px-4 py-8 overflow-y-auto bg-white border-r rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700">
                 <a href="#" class="mx-auto">
                     <img class="w-auto h-6 sm:h-7" src="{{ asset('images/Capture_décran_2024-04-24_120041.png') }}"
                         alt="">

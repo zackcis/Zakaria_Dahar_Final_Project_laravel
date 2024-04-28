@@ -5,9 +5,9 @@
         </h2>
     </x-slot> --}}
 
-    <div class="flex flex-col justify-center items-center">
+    <div class="flex flex-col justify-center items-center w-[100%] my-5">
 
-        <div class="flex justify-center items-center gap-10">
+        <div class="flex justify-around items-center w-[80%]">
 
             <div class=''>
                 <div class='w-full max-w-lg p-6 mx-auto bg-white rounded-2xl shadow-xl flex flex-col'>
@@ -295,7 +295,6 @@
 
                 </div>
             </div>
-            <div></div>
             <div class="flex flex-col justify-center items-center gap-5 ">
                 <x-primary-button onclick="openProjectModal()" class="ms-3">
                     Create Project
@@ -552,7 +551,7 @@
                             <span>
 
                             </span>
-                           
+
                         </div>
                         <button class="mt-4 text-xl w-full text-white bg-indigo-600 py-2 rounded-xl shadow-lg">Buy
                             Lesson</button>
@@ -598,7 +597,7 @@
                             <span>
 
                             </span>
-                           
+
                         </div>
                         <button class="mt-4 text-xl w-full text-white bg-indigo-600 py-2 rounded-xl shadow-lg">Start
                             Watching Now</button>
