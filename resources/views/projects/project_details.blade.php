@@ -116,10 +116,9 @@
             color: white;
         }
     </style>
-    <div class="all w-full p-5">
+    <div class="all w-full">
         <div class="board">
             <form id="todo-form">
-                <input type="text" placeholder="New TODO..." id="todo-input" />
                 <button onclick="openTaskModal()" type="submit">Add +</button>
                 <button onclick="openProjectDetailsModal()">Invite people</button>
             </form>
@@ -141,7 +140,7 @@
                                 </svg>
                             </div>
                         </div>
-                        <!-- Body -->
+
                         <form id="invitationForm" action="{{ route('projects.sendInvitations', $project->id) }}"
                             method="POST">
                             @csrf
@@ -149,7 +148,6 @@
                                 <label for="email">Email Address</label>
                                 <input id="email" type="email" name="email" required>
                             </div>
-                            <!-- Add more input fields if needed -->
                             <div class="flex justify-end items-center gap-3">
                                 <button type="submit"
                                     class="focus:outline-none px-4 bg-teal-500 p-3 ml-3 rounded-lg text-white hover:bg-teal-400">Send
@@ -226,10 +224,7 @@
                             </div>
 
                         </form>
-                        <!-- Add input fields for other project attributes (start date, deadline, etc.) as needed -->
 
-
-                        <!--Footer-->
                         <div class="flex justify-end pt-2">
                         </div>
                     </div>
@@ -271,7 +266,7 @@
 
         droppables.forEach((zone) => {
             zone.addEventListener("dragover", (e) => {
-                e.preventDefault(); // Prevent default behavior to allow dropping
+                e.preventDefault();
                 const bottomTask = insertAboveTask(zone, e.clientY);
                 const curTask = document.querySelector(".is-dragging");
                 if (!bottomTask) {
@@ -281,7 +276,6 @@
                 }
             });
 
-            // Add event listener for drop event
             zone.addEventListener("drop", (e) => {
                 e.preventDefault();
                 const curTask = document.querySelector(".is-dragging");
@@ -311,7 +305,7 @@
         const todoLane = document.getElementById("todo-lane");
 
         form.addEventListener("submit", (e) => {
-            e.preventDefault(); // Prevent form submission
+            e.preventDefault();
             const value = input.value;
             if (!value) return;
             const newTask = document.createElement("p");
@@ -329,11 +323,11 @@
         });
 
 
-        const projectDetailsModal = document.querySelector('.project-details'); // Define projectDetailsModal
+        const projectDetailsModal = document.querySelector('.project-details'); 
         const openProjectDetailsModal = () => {
-            projectDetailsModal.classList.remove('hidden'); // Fix modal class name
-            projectDetailsModal.classList.remove('fadeOut'); // Remove fadeOut class
-            projectDetailsModal.classList.add('fadeIn'); // Add fadeIn class
+            projectDetailsModal.classList.remove('hidden');
+            projectDetailsModal.classList.remove('fadeOut');
+            projectDetailsModal.classList.add('fadeIn');
             projectDetailsModal.style.display = 'flex';
         }
         const closeProjectDetailsModal = () => {
@@ -343,7 +337,7 @@
 
         const openTaskModal = () => {
             taskModal.classList.remove('hidden');
-            taskModal.classList.remove('fadeOut'); // Remove fadeOut class
+            taskModal.classList.remove('fadeOut');
             taskModal.classList.add('fadeIn');
             taskModal.style.display = 'flex';
         }
@@ -353,31 +347,8 @@
         window.onclick = function(event) {
             if (event.target == projectModal) closeProjectModal();
             if (event.target == taskModal) closeTaskModal();
-            if (event.target == projectDetailsModal) closeProjectDetailsModal(); // Fix variable name
+            if (event.target == projectDetailsModal) closeProjectDetailsModal();
         }
-        // const sendInvitation = (projectId) => {
-        //     const form = document.querySelector('#invitation-form');
-        //     form.addEventListener('submit', (event) => {
-        //         event.preventDefault();
-        //         const formData = new FormData(form);
-        //         fetch(`/projects/${projectId}/send-invitations`, {
-        //                 method: 'POST',
-        //                 body: formData
-        //             })
-        //             .then(response => {
-        //                 if (!response.ok) {
-        //                     throw new Error('Network response was not ok');
-        //                 }
-        //                 return response.json();
-        //             })
-        //             .then(data => {
-        //                 console.log(data); // Handle successful response
-        //             })
-        //             .catch(error => {
-        //                 console.error('Error:', error); // Handle error
-        //             });
-        //     });
-        // }
     </script>
     </div>
 </x-app-layout>

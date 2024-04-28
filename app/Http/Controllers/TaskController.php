@@ -12,13 +12,11 @@ class TaskController extends Controller
     //
     public function index()
     {
-        $projects = project::all(); // Retrieve all projects for the project dropdown
+        $projects = project::all();
         return view('tasks', compact('projects'));
     }
-
     public function store(Request $request)
     {
-        // Validate the request
         $request->validate([
             'title' => ['required', 'string'],
             'description' => ['required', 'string'],
@@ -27,8 +25,6 @@ class TaskController extends Controller
             'deadline' => ['required', 'date', 'after_or_equal:start_date'],
             'project_id' => ['nullable', 'exists:projects,id'],
         ]);
-    
-        // Create and save the task
         $task = new Task();
         $task->title = $request->title;
         $task->description = $request->description;
@@ -39,15 +35,8 @@ class TaskController extends Controller
         if ($request->has('project_id')) {
             $task->project_id = $request->project_id;
         }
-        
         $task->user_id = Auth::id();
         $task->save();
-        
-        // Return JSON response*
-        // response()->json([
-        //     'success' => true,
-        //     'task' => $task,
-        // ]);
         return redirect()->back();
     }
 }

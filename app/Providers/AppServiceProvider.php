@@ -28,16 +28,11 @@ class AppServiceProvider extends ServiceProvider
         $user = Auth::id();
         $ownProjects = Project::where('created_by', $user)->get();
         $tasks = Task::all();
-        // Define an array to hold tasks related to each project
         $tasksByProject = [];
-
-        // Retrieve tasks related to each project and store them in the $tasksByProject array
         foreach ($projects as $project) {
             $tasks = Task::where('project_id', $project->id)->get();
             $tasksByProject[$project->id] = $tasks;
         }
-
-        // Share the data with views
         view()->share([
             'projects' => $projects,
             'users' => $users,

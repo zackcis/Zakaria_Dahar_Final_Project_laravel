@@ -57,23 +57,16 @@ class ProjectController extends Controller
         $validatedData = $request->validate([
             'email' => 'required|email',
         ]);
-
         $project = Project::findOrFail($projectId);
-
         Mail::to($validatedData['email'])->send(new ProjectInvitation($project));
-
         return redirect()->back();
     }
     public function joinProject($projectId)
 {
     $project = Project::findOrFail($projectId);
-
     $userId = Auth::id();
-
     $project->members()->attach($userId, ['role' => 'member']);
-
     $project->save();
-
     return redirect()->route('dashboard', $projectId)->with('success', 'You have successfully joined the project.');
 }
 

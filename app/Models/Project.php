@@ -12,8 +12,8 @@ class Project extends Model
     protected $fillable = [
         'title',
         'description',
-        'user_id', // Assuming this is the foreign key for the user who created the project
-        'created_by', // You may want to remove this if it's not necessary
+        'user_id', 
+        'created_by',
         'start_date',
         'deadline',
         'project_picture',
@@ -25,7 +25,7 @@ class Project extends Model
     }
     public function users()
     {
-        return $this->belongsTo(User::class); // Assuming one project belongs to one user
+        return $this->belongsTo(User::class); 
     }
 
     public function tasks()

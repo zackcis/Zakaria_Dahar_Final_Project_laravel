@@ -144,7 +144,7 @@
                     </div>
                 </div>
             </div>
-            <div class="flex flex-col justify-center items-center gap-5 ">
+            {{-- <div class="flex flex-col justify-center items-center gap-5 ">
                 <x-primary-button onclick="openTaskModal()" class="ms-3 position-static">
                     Create Task
                 </x-primary-button>
@@ -154,7 +154,7 @@
                 @endforeach
                 {{-- <button  class='bg-blue-500 text-white p-2 rounded text-2xl font-bold'>Open
                     </button> --}}
-            </div>
+            {{-- </div> --}} 
 
             <div class="main-modal task-modal fixed w-full h-100 inset-0 z-50 overflow-hidden flex justify-center items-center animated fadeIn hidden faster"
                 style="background: rgba(0,0,0,.7);">
@@ -236,7 +236,7 @@
     <script>
         const projectModal = document.querySelector('.project-modal');
         const taskModal = document.querySelector('.task-modal');
-        const projectDetailsModal = document.querySelector('.project-details'); // Define projectDetailsModal
+        const projectDetailsModal = document.querySelector('.project-details'); 
 
         const modalClose = (modal) => {
             modal.classList.add('fadeOut');
@@ -248,22 +248,22 @@
 
         const openProjectModal = () => {
             projectModal.classList.remove('hidden');
-            projectModal.classList.remove('fadeOut'); // Remove fadeOut class
+            projectModal.classList.remove('fadeOut');
             projectModal.classList.add('fadeIn');
             projectModal.style.display = 'flex';
         }
 
         const openTaskModal = () => {
             taskModal.classList.remove('hidden');
-            taskModal.classList.remove('fadeOut'); // Remove fadeOut class
+            taskModal.classList.remove('fadeOut');
             taskModal.classList.add('fadeIn');
             taskModal.style.display = 'flex';
         }
 
         const openProjectDetailsModal = () => {
-            projectDetailsModal.classList.remove('hidden'); // Fix modal class name
-            projectDetailsModal.classList.remove('fadeOut'); // Remove fadeOut class
-            projectDetailsModal.classList.add('fadeIn'); // Add fadeIn class
+            projectDetailsModal.classList.remove('hidden'); 
+            projectDetailsModal.classList.remove('fadeOut'); 
+            projectDetailsModal.classList.add('fadeIn'); 
             projectDetailsModal.style.display = 'flex';
         }
 
@@ -278,36 +278,12 @@
             modalClose(projectDetailsModal);
         }
 
-        // Close modal when clicking outside of it
+
         window.onclick = function(event) {
             if (event.target == projectModal) closeProjectModal();
             if (event.target == taskModal) closeTaskModal();
-            if (event.target == projectDetailsModal) closeProjectDetailsModal(); // Fix variable name
+            if (event.target == projectDetailsModal) closeProjectDetailsModal();
         }
 
-        // Function to handle invitation form submission
-        // const sendInvitation = (projectId) => {
-        //     const form = document.querySelector('#invitation-form');
-        //     form.addEventListener('submit', (event) => {
-        //         event.preventDefault();
-        //         const formData = new FormData(form);
-        //         fetch(`/projects/${projectId}/send-invitations`, {
-        //                 method: 'POST',
-        //                 body: formData
-        //             })
-        //             .then(response => {
-        //                 if (!response.ok) {
-        //                     throw new Error('Network response was not ok');
-        //                 }
-        //                 return response.json();
-        //             })
-        //             .then(data => {
-        //                 console.log(data); // Handle successful response
-        //             })
-        //             .catch(error => {
-        //                 console.error('Error:', error); // Handle error
-        //             });
-        //     });
-        // }
     </script>
 </x-app-layout>
