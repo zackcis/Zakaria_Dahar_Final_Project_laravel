@@ -24,16 +24,17 @@ Route::middleware('auth')->group(function () {
     //^^Project
     Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
     Route::post('/projects/store', [ProjectController::class, 'store'])->name('projects.store');
+    Route::get('/projects/show/{project}', [ProjectController::class, 'show'])->name('projects.show');
 
     // ! Task
     Route::get('/tasks', [TaskController::class, 'index'])->name('tasks.index');
     Route::post('/tasks/store', [TaskController::class, 'store'])->name('tasks.store');
 
     // &Calendar
-    // Route::get('/calendar',[CalendarController::class, 'index'])->name('calendar.index');
+    Route::get('/calendar',[CalendarController::class, 'index'])->name('calendar.index');
 
-    //*Invitatin
-    Route::post('/projects/{project}/send-invitations', [ProjectController::class, 'sendInvitations'])->name('projects.sendInvitations');
+    //*Invitation
+    Route::post('/projects/{projectId}/send-invitations', [ProjectController::class, 'sendInvitations'])->name('projects.sendInvitations');
     Route::get('/projects/{projectId}/join', [ProjectController::class,'joinProject'])->name('projects.join');
     Route::get('/join-project/{token}', [ProjectMemberController::class, 'joinProjectByToken'])->name('join.project');
 

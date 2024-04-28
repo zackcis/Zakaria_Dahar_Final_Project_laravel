@@ -23,22 +23,27 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
-        // $myProjects = Project::whereHas('members', function ($query) {
-        //     $query->where('users.id', auth()->id());
-        // })->get();
-        
-        $ownprojects = Project::where('created_by', Auth::id())->get();
-        $projects = project::all();
         $users = User::all();
+        $projects = Project::all();
+        $user = Auth::id();
+        $ownProjects = Project::where('created_by', $user)->get();
         $tasks = Task::all();
-        
+        // Define an array to hold tasks related to each project
+        $tasksByProject = [];
+
+        // Retrieve tasks related to each project and store them in the $tasksByProject array
+        foreach ($projects as $project) {
+            $tasks = Task::where('project_id', $project->id)->get();
+            $tasksByProject[$project->id] = $tasks;
+        }
+
+        // Share the data with views
         view()->share([
-            'projects'=> $projects,
-            'users'=> $users,
-            'tasks'=> $tasks,
-            'ownprojects'=> $ownprojects,
-            // 'myProjects'=> $myProjects,
+            'projects' => $projects,
+            'users' => $users,
+            'ownProjects' => $ownProjects,
+            'tasksByProject' => $tasksByProject,
+            'tasks' => $tasks
         ]);
     }
 }

@@ -1,8 +1,11 @@
 <x-app-layout>
-    <div class="w-[100%] h-screen" id="calendar"></div>
+    <div class="w-[100%] flex justify-center items-center">
+
+        <div class=" rounded-lg h-screen" id="calendar"></div>
+    </div>
 
     <!-- Modal -->
-    <div class="main-modal fixed w-full h-full inset-0 z-50 overflow-hidden flex justify-center items-center animated fadeIn faster hidden"
+    {{-- <div class="main-modal fixed w-full h-full inset-0 z-50 overflow-hidden flex justify-center items-center animated fadeIn faster hidden"
         style="background: rgba(0,0,0,.7);" id="calendarModal" style="display: none;">
         <div
             class="border border-teal-500 shadow-lg modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
@@ -32,7 +35,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- End Modal -->
 
     <script>
@@ -65,24 +68,19 @@
                             buttonText: "Month"
                         }
                     },
-                    initialView: "timeGridWeek",
-                    // slotMinTime: "09:00:00",
-                    // slotMaxTime: "19:00:00",
+                    initialView: "dayGridMonth",
                     nowIndicator: true,
-                    selectable: true,
-                    selectMirror: true,
-                    selectOverlap: true,
                     weekends: true,
-                    select: (info) => {
-                        document.getElementById('calendarModal').style.display = 'block';
-                    },
-                    selectAllow: (info) => {
-                        let instant = new Date()
-                        return info.start > instant
-                    },
-                    eventClick: (info) => {
-                        console.log(info);
-                    }
+                    events: [
+                        @foreach ($projects as $project)
+                            {
+                                title: '{{ $project->title }}',
+                                start: '{{ $project->start_date }}',
+                                end: '{{ $project->deadline }}',
+                                color: 'blue'
+                            },
+                        @endforeach
+                    ],
                 });
 
                 calendar.render();

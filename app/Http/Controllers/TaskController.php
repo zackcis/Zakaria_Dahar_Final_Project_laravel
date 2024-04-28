@@ -18,31 +18,36 @@ class TaskController extends Controller
 
     public function store(Request $request)
     {
+        // Validate the request
         $request->validate([
             'title' => ['required', 'string'],
             'description' => ['required', 'string'],
             'priority' => ['required', 'string'],
-            'start_date' => ['required', 'date'], // Ensure start_date is provided and is a valid date
-            'deadline' => ['required', 'date', 'after_or_equal:start_date'], // Ensure deadline is provided, is a valid date, and is after or equal to start_date
-            'project_id' => ['nullable', 'exists:projects,id'], // Ensure project_id exists in the projects table (if provided)
+            'start_date' => ['required', 'date'],
+            'deadline' => ['required', 'date', 'after_or_equal:start_date'],
+            'project_id' => ['nullable', 'exists:projects,id'],
         ]);
-        // dd('ff');
-        
+    
+        // Create and save the task
         $task = new Task();
         $task->title = $request->title;
         $task->description = $request->description;
         $task->priority = $request->priority;
         $task->start_date = $request->start_date;
         $task->deadline = $request->deadline;
-
         
         if ($request->has('project_id')) {
             $task->project_id = $request->project_id;
         }
-
+        
         $task->user_id = Auth::id();
         $task->save();
-
+        
+        // Return JSON response*
+        // response()->json([
+        //     'success' => true,
+        //     'task' => $task,
+        // ]);
         return redirect()->back();
     }
 }

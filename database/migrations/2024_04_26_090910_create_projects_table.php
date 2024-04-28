@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('description');
+            $table->string('project_picture')->nullable()->after('description');
             $table->foreignId('user_id')->constrained();
             $table->integer('created_by');
             $table->date('start_date');

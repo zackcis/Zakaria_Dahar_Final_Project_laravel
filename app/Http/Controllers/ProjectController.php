@@ -12,9 +12,13 @@ class ProjectController extends Controller
 {
     public function index()
     {
-        return view('projects');
+        return view('projects.projects');
     }
-
+    public function show($projectId)
+    {
+        $project = Project::findOrFail($projectId);
+        return view('projects.project_details', compact('project'));
+    }
     public function store(Request $request)
     {
         $request->validate([
@@ -23,6 +27,8 @@ class ProjectController extends Controller
             'created_by' => ['required', 'integer'],
             'start_date' => ['required', 'date'],
             'deadline' => ['required', 'date', 'after_or_equal:start_date'],
+            'project_picture' => ['image', 'mimes:jpeg,png,jpg,gif', 'max:2048'], // Max file size: 2MB
+
         ]);
 
         $project = new Project();
@@ -32,7 +38,13 @@ class ProjectController extends Controller
         $project->created_by = $request->created_by;
         $project->start_date = $request->start_date;
         $project->deadline = $request->deadline;
-
+        if ($request->hasFile('project_picture')) {
+            // Store the uploaded file and get its path
+            $projectPicturePath = $request->file('project_picture')->store('project_pictures');
+    
+            // Save the image path to the database
+            $project->project_picture = $projectPicturePath;
+        }
         $project->user_id = Auth::id();
 
         $project->save();
