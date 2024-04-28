@@ -254,6 +254,8 @@
     <script>
         const draggables = document.querySelectorAll(".task");
         const droppables = document.querySelectorAll(".swim-lane");
+        const projectDetailsModal = document.querySelector('.project-details');
+        const taskModal = document.querySelector('.task-modal');
 
         draggables.forEach((task) => {
             task.addEventListener("dragstart", () => {
@@ -322,18 +324,21 @@
             input.value = "";
         });
 
-
-        const projectDetailsModal = document.querySelector('.project-details'); 
         const openProjectDetailsModal = () => {
             projectDetailsModal.classList.remove('hidden');
             projectDetailsModal.classList.remove('fadeOut');
             projectDetailsModal.classList.add('fadeIn');
             projectDetailsModal.style.display = 'flex';
         }
+
         const closeProjectDetailsModal = () => {
-            modalClose(projectDetailsModal);
+            projectDetailsModal.classList.remove('fadeIn');
+            projectDetailsModal.classList.add('fadeOut');
+            setTimeout(() => {
+                projectDetailsModal.classList.add('hidden');
+                projectDetailsModal.style.display = 'none'; // Reset display style
+            }, 500);
         }
-        const taskModal = document.querySelector('.task-modal');
 
         const openTaskModal = () => {
             taskModal.classList.remove('hidden');
@@ -341,14 +346,29 @@
             taskModal.classList.add('fadeIn');
             taskModal.style.display = 'flex';
         }
+
         const closeTaskModal = () => {
-            modalClose(taskModal);
+            taskModal.classList.remove('fadeIn');
+            taskModal.classList.add('fadeOut');
+            setTimeout(() => {
+                taskModal.classList.add('hidden');
+                taskModal.style.display = 'none'; // Reset display style
+            }, 500);
         }
+
         window.onclick = function(event) {
-            if (event.target == projectModal) closeProjectModal();
-            if (event.target == taskModal) closeTaskModal();
             if (event.target == projectDetailsModal) closeProjectDetailsModal();
+            if (event.target == taskModal) closeTaskModal();
         }
+
+        const closeButtons = document.querySelectorAll('.modal-close');
+        closeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                if (button.closest('.project-details')) closeProjectDetailsModal();
+                if (button.closest('.task-modal')) closeTaskModal();
+            });
+        });
     </script>
+
     </div>
 </x-app-layout>
