@@ -45,8 +45,9 @@
                 var calendar = new FullCalendar.Calendar(myCalendar, {
                     headerToolbar: {
                         left: 'dayGridMonth,timeGridWeek,timeGridDay',
-                        center: 'title',
+                        center: 'title,prev,next',
                         right: 'listMonth,listWeek,listDay'
+                       
                     },
                     views: {
                         listDay: {
