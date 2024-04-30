@@ -36,7 +36,7 @@
         <!-- Page Content -->
         <main class="flex">
             <aside
-                class="flex flex-col w-64 min-h-screen px-4 py-8 overflow-y-auto bg-white border-r rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700">
+                class=" max-[430px]:hidden flex flex-col w-64 min-h-screen px-4 py-8 overflow-y-auto bg-white border-r rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700">
                 <a href="#" class="mx-auto">
                     <img class="w-auto h-6 sm:h-7" src="{{ asset('images/Capture_décran_2024-04-24_120041.png') }}"
                         alt="">
@@ -65,7 +65,7 @@
 
 
                         <a class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
-                            href="#">
+                        href="{{ route('tasks.index') }}">
                             <i class="fa-solid fa-diagram-project"></i>
 
                             <span class="mx-4 font-medium">Tasks</span>

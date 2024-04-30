@@ -13,7 +13,8 @@ class TaskController extends Controller
     public function index()
     {
         $projects = project::all();
-        return view('tasks', compact('projects'));
+        $independentTasks = Task::all();
+        return view('tasks', compact('projects','independentTasks'));
     }
     public function store(Request $request)
     {

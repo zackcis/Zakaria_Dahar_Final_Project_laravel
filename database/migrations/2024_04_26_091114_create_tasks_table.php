@@ -18,7 +18,7 @@ return new class extends Migration
             $table->date('start_date');
             $table->date('deadline');
             $table->enum('priority', ['urgent', 'normal'])->default('normal');
-            $table->integer('project_id')->constrained();
+            $table->integer('project_id')->nullable()->constrained();
             $table->timestamps();
         });
     }

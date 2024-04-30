@@ -47,7 +47,6 @@
                         left: 'dayGridMonth,timeGridWeek,timeGridDay',
                         center: 'title,prev,next',
                         right: 'listMonth,listWeek,listDay'
-                       
                     },
                     views: {
                         listDay: {
@@ -74,12 +73,14 @@
                     weekends: true,
                     events: [
                         @foreach ($projects as $project)
-                            {
-                                title: '{{ $project->title }}',
-                                start: '{{ $project->start_date }}',
-                                end: '{{ $project->deadline }}',
-                                color: 'blue'
-                            },
+                            @if ($project->members->contains('id', Auth::user()->id))
+                                {
+                                    title: '{{ $project->title }}',
+                                    start: '{{ $project->start_date }}',
+                                    end: '{{ $project->deadline }}',
+                                    color: 'purple'
+                                },
+                            @endif
                         @endforeach
                     ],
                 });
@@ -90,4 +91,14 @@
             }
         });
     </script>
+    <style>
+        @media (max-width: 430px) {
+
+            .fc-header-toolbar .fc-listMonth-button,
+            .fc-header-toolbar .fc-listWeek-button,
+            .fc-header-toolbar .fc-listDay-button {
+                display: none;
+            }
+        }
+    </style>
 </x-app-layout>

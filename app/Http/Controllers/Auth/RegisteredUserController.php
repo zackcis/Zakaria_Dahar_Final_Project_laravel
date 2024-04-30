@@ -9,6 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 
@@ -53,5 +54,48 @@ class RegisteredUserController extends Controller
         Auth::login($user);
 
         return redirect(route('dashboard', absolute: false));
+    }
+    public function updateImage(Request $request): RedirectResponse
+    {
+        $request->validate([
+            'image' => ['image', 'max:2048'], // Ensure the uploaded file is an image (jpg, png, etc.) and within 2MB
+        ]);
+
+        $user = Auth::user();
+
+        // Delete the existing image if it exists
+        if ($user->image) {
+            Storage::disk('public')->delete($user->image);
+        }
+
+        $imagePath = $this->storeImage($request->file('image'));
+
+        $user->update(['image' => $imagePath]);
+
+        return redirect()->back()->with('success', 'Image updated successfully.');
+    }
+
+    /**
+     * Delete the user's image.
+     */
+    public function deleteImage(): RedirectResponse
+    {
+        $user = Auth::user();
+
+        // Delete the existing image if it exists
+        if ($user->image) {
+            Storage::disk('public')->delete($user->image);
+            $user->update(['image' => null]);
+        }
+
+        return redirect()->back()->with('success', 'Image deleted successfully.');
+    }
+
+    /**
+     * Store the uploaded image and return its path.
+     */
+    private function storeImage($image): string
+    {
+        return $image ? $image->store('profile-images', 'public') : null;
     }
 }

@@ -7,9 +7,9 @@
 
     <div class="flex flex-col justify-center items-center w-[100%] my-5">
 
-        <div class="flex justify-around items-center w-[70%]">
+        <div class="flex justify-around items-center w-[70%]  max-[430px]:flex-col  max-[430px]:justify-center  max-[430px]:items-center  max-[430px]:gap-6  max-[430px]:w-[100%]">
 
-            <div class=''>
+            <div class=' max-[430px]:w-[95%]'>
                 <div class='w-full max-w-lg p-6 mx-auto bg-white rounded-2xl shadow-xl flex flex-col'>
                     <div class="flex justify-between pb-4">
                         <div class="-rotate-90 cursor-pointer">
@@ -295,86 +295,41 @@
 
                 </div>
             </div>
-            <div class="w-full max-w-lg p-6 mx-auto bg-white rounded-2xl shadow-xl flex flex-col">
-
-                <div class="flex flex-col justify-center items-center gap-5 ">
+            <div
+                class="w-full max-w-lg p-6 mx-auto bg-white rounded-2xl shadow-xl flex flex-col justify-center items-center gap-2  max-[430px]:w-[95%]">
+                <div class="w-[100%] flex flex-col justify-center items-center  max-[430px]:w-[95%]">
                     <x-primary-button onclick="openProjectModal()" class="ms-3">
                         Create Project
                     </x-primary-button>
-                    {{-- {{ dd(Auth::user()->id) }} --}}
-                    @if (Auth::user()->projects->isEmpty())
-                        <p>No projects created yet.</p>
-                    @else
-                        @foreach (Auth::user()->projects as $project)
-                            @php
-                                $userProjects = Auth::user()
-                                    ->projects()
-                                    ->whereHas('members', function ($query) {
-                                        $query->where('role', 'owner');
-                                    })
-                                    ->get();
-                            @endphp
-                        @endforeach
-                        @if ($userProjects->isEmpty())
-                            <p>No projects</p>
-                        @else
-                            <p>Projects created by {{ Auth::user()->name }}:</p>
-                            @foreach ($userProjects as $project)
-                                <x-primary-button value="{{ $project->id }}" onclick="" class="ms-3 w-[200px]"><a
-                                        href="{{ route('projects.show', ['project' => $project->id]) }}">{{ $project->title }}</a></x-primary-button>
+                </div>
+                <div class="w-full  max-[430px]:w-[100%]">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Title</th>
+                                <th scope="col">Created By</th>
+                                <th scope="col">Members</th>
+                                <th scope="col">Deadline</th>
+                                <th class="ml-10" scope="col">View</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach ($projects as $project)
+                                @if ($project->members->contains('id', Auth::user()->id))
+                                    <tr class="">
+                                        <th class="" scope="row">{{ $project->title }}</th>
+                                        <td class="">{{ $project->createdBy->name }}</td>
+                                        <td class="">{{ $project->members->count() }}</td>
+                                        <td class="">{{ $project->deadline }}</td>
+                                        <td class=""><a
+                                                href="{{ route('projects.show', ['project' => $project->id]) }}"
+                                                class="text-blue-500 hover:text-blue-700">View</a></td>
+                                    </tr>
+                                @endif
                             @endforeach
-                        @endif
-                        <div class="project-details fixed w-full h-100 inset-0 z-50 overflow-hidden justify-center items-center animated fadeIn hidden faster"
-                            style="background: rgba(0,0,0,.7);">
-                            <div
-                                class="border border-teal-500 shadow-lg modal-container bg-white w-11/12 md:max-w-md mx-auto rounded z-50 overflow-y-auto">
-                                <div class="modal-content py-4 text-left px-6">
-                                    <!-- Title -->
-                                    <div class="flex justify-between items-center pb-3">
-                                        <p class="text-2xl font-bold">{{ $project->title }}</p>
-                                        <div class="modal-close cursor-pointer z-50">
-                                            <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg"
-                                                width="18" height="18" viewBox="0 0 18 18">
-                                                <path
-                                                    d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z">
-                                                </path>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    <!-- Body -->
-                                    <form id="invitationForm" action="{{ route('projects.sendInvitations', $project->id) }}"
-                                        method="POST">
-                                        @csrf
-                                        <div class="my-3 flex flex-col gap-2 justify-center items-center">
-                                            <label for="email">Email Address</label>
-                                            <input id="email" type="email" name="email" required>
-                                        </div>
-                                        <!-- Add more input fields if needed -->
-                                        <div class="flex justify-end items-center gap-3">
-                                            <button type="submit"
-                                                class="focus:outline-none px-4 bg-teal-500 p-3 ml-3 rounded-lg text-white hover:bg-teal-400">Send
-                                                Invitation</button>
-                                            <button type="button" onclick="closeProjectDetailsModal()"
-                                                class="focus:outline-none px-4 bg-gray-400 p-3 rounded-lg text-black hover:bg-gray-300">Cancel</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    @endif
-                    @if (!$projects->isEmpty())
-                        <p>ALL Projects:</p>
-                        @foreach ($projects as $project)
-                            {{-- Check if the user is a member of the project --}}
-                            @if ($project->members->contains('id', Auth::user()->id))
-                                <x-primary-button value="{{ $project->id }}" onclick="" class="ms-3 w-[200px]"><a
-                                        href="{{ route('projects.show', ['project' => $project->id]) }}">{{ $project->title }}</a></x-primary-button>
-                            @endif
-                        @endforeach
-                    @endif
-    
-                    {{-- <button  class='bg-blue-500 text-white p-2 rounded text-2xl font-bold'>Open
-                        </button> --}}
+                        </tbody>
+                    </table>
                 </div>
             </div>
             <div class="main-modal project-modal fixed w-full h-100 inset-0 z-50 overflow-hidden flex justify-center items-center animated fadeIn hidden faster"
