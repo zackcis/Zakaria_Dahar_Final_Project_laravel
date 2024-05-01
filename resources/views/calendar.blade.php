@@ -1,7 +1,18 @@
 <x-app-layout>
-    <div class="w-[100%] flex justify-center items-center">
+    <style>
+        .oli {
+            background-image: url('https://vojislavd.com/ta-template-demo/assets/img/auth-background.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            min-height: 100vh;
+            width: 100%;
 
-        <div class=" rounded-lg h-screen" id="calendar"></div>
+        }
+
+    </style>
+    <div class="oli w-[100%] flex justify-center items-center">
+
+        <div class=" bg-white h-screen bg" id="calendar"></div>
     </div>
 
     <!-- Modal -->
@@ -92,11 +103,23 @@
         });
     </script>
     <style>
+        .fc-header-toolbar .fc-prev-button{
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-top: 10px;
+
+        }
+        .fc-header-toolbar .fc-next-button{
+            margin-top: 10px;
+        }
         @media (max-width: 430px) {
 
             .fc-header-toolbar .fc-listMonth-button,
             .fc-header-toolbar .fc-listWeek-button,
-            .fc-header-toolbar .fc-listDay-button {
+            .fc-header-toolbar .fc-listDay-button ,
+            .fc-header-toolbar .fc-timeGridWeek-button,
+            .fc-header-toolbar .fc-timeGridDay-button,
+            .fc-header-toolbar .fc-dayGridMonth-button {
                 display: none;
             }
         }

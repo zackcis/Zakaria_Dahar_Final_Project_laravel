@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
@@ -19,12 +20,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::post('/user/update-image', [RegisteredUserController::class, 'updateImage'])->name('user.updateImage');
 
 
     //^^Project
     Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
     Route::post('/projects/store', [ProjectController::class, 'store'])->name('projects.store');
     Route::get('/projects/show/{project}', [ProjectController::class, 'show'])->name('projects.show');
+    Route::post('/projects/{projectId}/files', [ProjectController::class, 'storeFile'])->name('projects.files.store');
+
 
     // ! Task
     Route::get('/tasks', [TaskController::class, 'index'])->name('tasks.index');

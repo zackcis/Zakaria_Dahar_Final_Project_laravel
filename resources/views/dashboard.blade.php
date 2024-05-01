@@ -4,320 +4,60 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot> --}}
-<style>
-.oli{
-    background-image: url('https://vojislavd.com/ta-template-demo/assets/img/auth-background.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100%;
-    width: 100%;
-}
-</style>
-    <div class="oli flex flex-col justify-center items-center w-[100%] "
-    
-    >
+    <style>
+        .oli {
+            background-image: url('https://vojislavd.com/ta-template-demo/assets/img/auth-background.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+    <div class="oli flex flex-col justify-center items-center w-[100%] ">
 
-        <div class="mt-5 flex justify-around items-center w-[70%]  max-[430px]:flex-col  max-[430px]:justify-center  max-[430px]:items-center  max-[430px]:gap-6  max-[430px]:w-[100%]">
-
-            <div class=' max-[430px]:w-[95%]'>
-                <div class='w-full max-w-lg p-6 mx-auto bg-white rounded-2xl shadow-xl flex flex-col'>
-                    <div class="flex justify-between pb-4">
-                        <div class="-rotate-90 cursor-pointer">
-                            <svg width="12" height="7" viewBox="0 0 12 7" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path d="M11.001 6L6.00098 1L1.00098 6" stroke="black" stroke-opacity="0.4"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </div>
-                        <span class="uppercase text-sm font-semibold text-gray-600">january - 2022</span>
-                        <div class="rotate-90 cursor-pointer">
-                            <svg width="12" height="7" viewBox="0 0 12 7" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path d="M11.001 6L6.00098 1L1.00098 6" stroke="black" stroke-opacity="0.4"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </div>
-
+        <div
+            class="mt-5 flex justify-around items-center w-[70%]  max-[430px]:flex-col   max-[430px]:justify-center  max-[430px]:items-center  max-[430px]:gap-6  max-[430px]:w-[100%]">
+            <div class="lg:w-6/12 md:w-9/12 sm:w-10/12 mx-auto ">
+                <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                    <div class="flex items-center justify-between px-4 py-3 bg-gray-700">
+                        <button id="prevMonth" class="text-white">Previous</button>
+                        <h2 id="currentMonth" class="text-white"></h2>
+                        <button id="nextMonth" class="text-white">Next</button>
                     </div>
-                    <div class="flex justify-between font-medium uppercase text-xs pt-4 pb-2 border-t">
+                    <div class="grid grid-cols-7 gap-2 p-2" id="calendar">
+                        <!-- Calendar Days Go Here -->
+                    </div>
+                    <div id="myModal" class="modal hidden fixed inset-0 flex items-center justify-center z-50">
+                        <div class="modal-overlay absolute inset-0 bg-black opacity-50"></div>
 
                         <div
-                            class="px-3 border rounded-sm w-14 h-5 flex items-center justify-center border-red-500 text-red-500 shadow-md">
-                            sun
+                            class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+                            <div class="modal-content py-4 text-left px-6">
+                                <div class="flex justify-between items-center pb-3">
+                                    <p class="text-2xl font-bold">Selected Date</p>
+                                    <button id="closeModal"
+                                        class="modal-close px-3 py-1 rounded-full bg-gray-200 hover:bg-gray-300 focus:outline-none focus:ring">✕</button>
+                                </div>
+                                <div id="modalDate" class="text-xl font-semibold"></div>
+                            </div>
                         </div>
-
-
-                        <span
-                            class="px-3 border rounded-sm w-14 h-5 flex items-center justify-center border-green-500 text-green-500 shadow-md">
-                            mon
-                        </span>
-
-
-                        <span
-                            class="px-3 border rounded-sm w-14 h-5 flex items-center justify-center border-green-500 text-green-500 shadow-md">
-                            tue
-                        </span>
-
-
-                        <span
-                            class="px-3 border rounded-sm w-14 h-5 flex items-center justify-center border-green-500 text-green-500 shadow-md">
-                            wed
-                        </span>
-
-
-                        <span
-                            class="px-3 border rounded-sm w-14 h-5 flex items-center justify-center border-green-500 text-green-500 shadow-md">
-                            thu
-                        </span>
-
-
-                        <span
-                            class="px-3 border rounded-sm w-14 h-5 flex items-center justify-center border-green-500 text-green-500 shadow-md">
-                            fri
-                        </span>
-
-
-                        <span
-                            class="px-3 border rounded-sm w-14 h-5 flex items-center justify-center border-green-500 text-green-500 shadow-md">
-                            sat
-                        </span>
-
                     </div>
-
-                    <div class="flex justify-between font-medium text-sm pb-2">
-
-                        <span class="px-1 text-gray-400 w-14 flex justify-center items-center">
-                            30
-                        </span>
-
-
-                        <span class="px-1 text-gray-400 w-14 flex justify-center items-center">
-                            31
-                        </span>
-
-
-                        <span
-                            class="px-1 w-14 flex justify-center items-center border hover:border-green-500 hover:text-green-500 cursor-pointer">
-                            01
-                        </span>
-
-
-                        <span
-                            class="px-1 w-14 flex justify-center items-center border hover:border-green-500 hover:text-green-500 cursor-pointer">
-                            02
-                        </span>
-
-
-                        <span
-                            class="px-1 w-14 flex justify-center items-center border hover:border-green-500 hover:text-green-500 cursor-pointer">
-                            03
-                        </span>
-
-
-                        <span
-                            class="px-1 w-14 flex justify-center items-center border hover:border-green-500 hover:text-green-500 cursor-pointer">
-                            04
-                        </span>
-
-
-                        <span
-                            class="px-1 w-14 flex justify-center items-center border hover:border-green-500 hover:text-green-500 cursor-pointer">
-                            05
-                        </span>
-
-                    </div>
-                    <div class="flex justify-between font-medium text-sm pb-2">
-
-                        <span
-                            class="px-1 w-14 flex justify-center items-center border border-red-500 text-red-500 cursor-pointer">
-                            06
-                        </span>
-
-
-                        <span
-                            class="px-1 w-14 flex justify-center items-center border hover:border-green-500 hover:text-green-500 cursor-pointer">
-                            07
-                        </span>
-
-
-                        <span
-                            class="px-1 w-14 flex justify-center items-center border hover:border-green-500 hover:text-green-500 cursor-pointer">
-                            08
-                        </span>
-
-
-                        <span
-                            class="px-1 w-14 flex justify-center items-center border hover:border-green-500 hover:text-green-500 cursor-pointer">
-                            09
-                        </span>
-
-
-                        <span
-                            class="px-1 w-14 flex justify-center items-center border hover:border-green-500 hover:text-green-500 cursor-pointer">
-                            10
-                        </span>
-
-
-                        <span
-                            class="px-1 w-14 flex justify-center items-center border hover:border-green-500 hover:text-green-500 cursor-pointer">
-                            11
-                        </span>
-
-
-                        <span
-                            class="px-1 w-14 flex justify-center items-center border hover:border-green-500 hover:text-green-500 cursor-pointer">
-                            12
-                        </span>
-
-                    </div>
-
-                    <div class="flex justify-between font-medium text-sm pb-2">
-
-                        <span
-                            class="px-1 w-14 flex justify-center items-center border border-red-500 text-red-500 cursor-pointer">
-                            13
-                        </span>
-
-
-                        <span
-                            class="px-1 w-14 flex justify-center items-center border hover:border-green-500 hover:text-green-500 cursor-pointer">
-                            14
-                        </span>
-
-
-                        <span
-                            class="px-1 w-14 flex justify-center items-center border hover:border-green-500 hover:text-green-500 cursor-pointer">
-                            15
-                        </span>
-
-
-                        <span
-                            class="px-1 w-14 flex justify-center items-center border hover:border-green-500 hover:text-green-500 cursor-pointer">
-                            16
-                        </span>
-
-
-                        <span
-                            class="px-1 w-14 flex justify-center items-center border hover:border-green-500 hover:text-green-500 cursor-pointer">
-                            17
-                        </span>
-
-
-                        <span
-                            class="px-1 w-14 flex justify-center items-center border hover:border-green-500 hover:text-green-500 cursor-pointer">
-                            18
-                        </span>
-
-
-                        <span
-                            class="px-1 w-14 flex justify-center items-center border hover:border-green-500 hover:text-green-500 cursor-pointer">
-                            19
-                        </span>
-
-                    </div>
-
-                    <div class="flex justify-between font-medium text-sm pb-2">
-
-                        <span
-                            class="px-1 w-14 flex justify-center items-center border border-red-500 text-red-500 cursor-pointer">
-                            20
-                        </span>
-
-
-                        <span
-                            class="px-1 w-14 flex justify-center items-center border hover:border-green-500 hover:text-green-500 cursor-pointer">
-                            21
-                        </span>
-
-
-                        <span
-                            class="px-1 w-14 flex justify-center items-center border hover:border-green-500 hover:text-green-500 cursor-pointer">
-                            22
-                        </span>
-
-
-                        <span
-                            class="px-1 w-14 flex justify-center items-center border hover:border-green-500 hover:text-green-500 cursor-pointer">
-                            23
-                        </span>
-
-
-                        <span
-                            class="px-1 w-14 flex justify-center items-center border hover:border-green-500 hover:text-green-500 cursor-pointer">
-                            24
-                        </span>
-
-
-                        <span
-                            class="px-1 w-14 flex justify-center items-center border border-green-500 text-white bg-green-500 rounded-2xl cursor-pointer shadow-md">
-                            25
-                        </span>
-
-
-                        <span
-                            class="px-1 w-14 flex justify-center items-center border hover:border-green-500 hover:text-green-500 cursor-pointer">
-                            26
-                        </span>
-
-                    </div>
-
-                    <div class="flex justify-between font-medium text-sm pb-2">
-
-                        <span
-                            class="px-1 w-14 flex justify-center items-center border border-red-500 text-red-500 cursor-pointer">
-                            27
-                        </span>
-
-
-                        <span
-                            class="px-1 w-14 flex justify-center items-center border hover:border-green-500 hover:text-green-500 cursor-pointer">
-                            28
-                        </span>
-
-
-                        <span
-                            class="px-1 w-14 flex justify-center items-center border hover:border-green-500 hover:text-green-500 cursor-pointer">
-                            29
-                        </span>
-
-
-                        <span
-                            class="px-1 w-14 flex justify-center items-center border hover:border-green-500 hover:text-green-500 cursor-pointer">
-                            30
-                        </span>
-
-
-                        <span class="px-1 text-gray-400 w-14 flex justify-center items-center">
-                            01
-                        </span>
-
-
-                        <span class="px-1 text-gray-400 w-14 flex justify-center items-center">
-                            02
-                        </span>
-
-
-                        <span class="px-1 text-gray-400 w-14 flex justify-center items-center">
-                            03
-                        </span>
-
-                    </div>
-
                 </div>
             </div>
+
             <div
                 class="w-full max-w-lg p-6 mx-auto bg-white rounded-2xl shadow-xl flex flex-col justify-center items-center gap-2  max-[430px]:w-[95%]">
-                <div class="w-[100%] flex flex-col justify-center items-center  max-[430px]:w-[95%]">
+                <div class="w-[100%] flex flex-col justify-center items-center   max-[430px]:w-[95%]">
                     <x-primary-button onclick="openProjectModal()" class="ms-3">
                         Create Project
                     </x-primary-button>
                 </div>
                 <div class="w-full  max-[430px]:w-[100%]">
-                    <table class="table">
+                    <table class="table w-full h-full rounded-lg">
                         <thead>
                             <tr>
                                 <th scope="col">Title</th>
-                                <th scope="col">Created By</th>
+                                <th scope="col " class="text-center">Created By</th>
                                 <th scope="col">Members</th>
                                 <th scope="col">Deadline</th>
                                 <th class="ml-10" scope="col">View</th>
@@ -328,11 +68,11 @@
                             @foreach ($projects as $project)
                                 @if ($project->members->contains('id', Auth::user()->id))
                                     <tr class="">
-                                        <th class="" scope="row">{{ $project->title }}</th>
-                                        <td class="">{{ $project->createdBy->name }}</td>
-                                        <td class="">{{ $project->members->count() }}</td>
-                                        <td class="">{{ $project->deadline }}</td>
-                                        <td class=""><a
+                                        <th class=" max-[430px]:text-center" scope="row">{{ $project->title }}</th>
+                                        <td class=" max-[430px]:text-center">{{ $project->createdBy->name }}</td>
+                                        <td class=" max-[430px]:text-center">{{ $project->members->count() }}</td>
+                                        <td class=" max-[430px]:text-center">{{ $project->deadline }}</td>
+                                        <td class=" max-[430px]:text-center"><a
                                                 href="{{ route('projects.show', ['project' => $project->id]) }}"
                                                 class="text-blue-500 hover:text-blue-700">View</a></td>
                                     </tr>
@@ -351,8 +91,8 @@
                         <div class="flex justify-between items-center pb-3">
                             <p class="text-2xl font-bold">Create your project</p>
                             <div class="modal-close cursor-pointer z-50">
-                                <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg"
-                                    width="18" height="18" viewBox="0 0 18 18">
+                                <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18"
+                                    height="18" viewBox="0 0 18 18">
                                     <path
                                         d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z">
                                     </path>
@@ -480,7 +220,7 @@
         </div>
         <!-- component -->
         <!-- Create By Joker Banny -->
-        <div class=" flex justify-center items-center py-20">
+        <div class=" flex justify-center items-center py-20 ">
             <div class="md:px-4 md:grid md:grid-cols-2 lg:grid-cols-3 gap-5 space-y-4 md:space-y-0">
                 <div
                     class="max-w-sm bg-white px-6 pt-6 pb-2 rounded-xl shadow-lg transform hover:scale-105 transition duration-500">
@@ -521,8 +261,8 @@
                             </span>
 
                         </div>
-                        <button class="mt-4 text-xl w-full text-white bg-indigo-600 py-2 rounded-xl shadow-lg">Buy
-                            Lesson</button>
+                        <button class="mt-4 text-xl w-full text-white bg-indigo-600 py-2 rounded-xl shadow-lg"><a class="text-decoration-none text-white" href="https://www.coursera.org/learn/work-smarter-not-harder">Buy
+                            Lesson</a></button>
                     </div>
                 </div>
                 <div
@@ -567,8 +307,8 @@
                             </span>
 
                         </div>
-                        <button class="mt-4 text-xl w-full text-white bg-indigo-600 py-2 rounded-xl shadow-lg">Start
-                            Watching Now</button>
+                        <button class="mt-4 text-xl w-full text-white bg-indigo-600 py-2 rounded-xl shadow-lg"><a class="text-decoration-none text-white" href="https://www.coursera.org/learn/work-smarter-not-harder">Start
+                            Watching Now</a></button>
                     </div>
                 </div>
                 <div
@@ -608,8 +348,8 @@
 
 
                         </div>
-                        <button class="mt-4 text-xl w-full text-white bg-indigo-600 py-2 rounded-xl shadow-lg">Buy
-                            Lesson</button>
+                        <button class="mt-4 text-xl w-full text-white bg-indigo-600 py-2 rounded-xl shadow-lg"><a class="text-decoration-none text-white" href="https://www.coursera.org/learn/positive-psychiatry">Buy
+                            Lesson</a></button>
                     </div>
                 </div>
             </div>
@@ -665,6 +405,121 @@
                 if (event.target == taskModal) closeTaskModal();
                 if (event.target == projectDetailsModal) closeProjectDetailsModal();
             }
+
+
+            // Function to generate the calendar for a specific month and year
+            function generateCalendar(year, month) {
+                const calendarElement = document.getElementById('calendar');
+                const currentMonthElement = document.getElementById('currentMonth');
+
+                // Create a date object for the first day of the specified month
+                const firstDayOfMonth = new Date(year, month, 1);
+                const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+                // Clear the calendar
+                calendarElement.innerHTML = '';
+
+                // Set the current month text
+                const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September',
+                    'October', 'November', 'December'
+                ];
+                currentMonthElement.innerText = `${monthNames[month]} ${year}`;
+
+                // Calculate the day of the week for the first day of the month (0 - Sunday, 1 - Monday, ..., 6 - Saturday)
+                const firstDayOfWeek = firstDayOfMonth.getDay();
+
+                // Create headers for the days of the week
+                const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+                daysOfWeek.forEach(day => {
+                    const dayElement = document.createElement('div');
+                    dayElement.className = 'text-center font-semibold';
+                    dayElement.innerText = day;
+                    calendarElement.appendChild(dayElement);
+                });
+
+                // Create empty boxes for days before the first day of the month
+                for (let i = 0; i < firstDayOfWeek; i++) {
+                    const emptyDayElement = document.createElement('div');
+                    calendarElement.appendChild(emptyDayElement);
+                }
+
+                // Create boxes for each day of the month
+                for (let day = 1; day <= daysInMonth; day++) {
+                    const dayElement = document.createElement('div');
+                    dayElement.className = 'text-center py-2 border cursor-pointer';
+                    dayElement.innerText = day;
+
+                    // Check if this date is the current date
+                    const currentDate = new Date();
+                    if (year === currentDate.getFullYear() && month === currentDate.getMonth() && day === currentDate
+                        .getDate()) {
+                        dayElement.classList.add('bg-blue-500', 'text-white'); // Add classes for the indicator
+                    }
+
+                    calendarElement.appendChild(dayElement);
+                }
+            }
+
+            // Initialize the calendar with the current month and year
+            const currentDate = new Date();
+            let currentYear = currentDate.getFullYear();
+            let currentMonth = currentDate.getMonth();
+            generateCalendar(currentYear, currentMonth);
+
+            // Event listeners for previous and next month buttons
+            document.getElementById('prevMonth').addEventListener('click', () => {
+                currentMonth--;
+                if (currentMonth < 0) {
+                    currentMonth = 11;
+                    currentYear--;
+                }
+                generateCalendar(currentYear, currentMonth);
+            });
+
+            document.getElementById('nextMonth').addEventListener('click', () => {
+                currentMonth++;
+                if (currentMonth > 11) {
+                    currentMonth = 0;
+                    currentYear++;
+                }
+                generateCalendar(currentYear, currentMonth);
+            });
+
+            // Function to show the modal with the selected date
+            function showModal(selectedDate) {
+                const modal = document.getElementById('myModal');
+                const modalDateElement = document.getElementById('modalDate');
+                modalDateElement.innerText = selectedDate;
+                modal.classList.remove('hidden');
+            }
+
+            // Function to hide the modal
+            function hideModal() {
+                const modal = document.getElementById('myModal');
+                modal.classList.add('hidden');
+            }
+
+            // Event listener for date click events
+            const dayElements = document.querySelectorAll('.cursor-pointer');
+            dayElements.forEach(dayElement => {
+                dayElement.addEventListener('click', () => {
+                    const day = parseInt(dayElement.innerText);
+                    const selectedDate = new Date(currentYear, currentMonth, day);
+                    const options = {
+                        weekday: 'long',
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                    };
+                    const formattedDate = selectedDate.toLocaleDateString(undefined, options);
+                    showModal(formattedDate);
+                });
+            });
+
+            // Event listener for closing the modal
+            document.getElementById('closeModal').addEventListener('click', () => {
+                hideModal();
+            });
         </script>
     </div>
 </x-app-layout>

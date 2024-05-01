@@ -7,6 +7,7 @@ use App\Models\Project;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ProjectInvitation;
+use App\Models\ProjectFile;
 
 class ProjectController extends Controller
 {
@@ -69,5 +70,26 @@ class ProjectController extends Controller
     $project->save();
     return redirect()->route('dashboard', $projectId)->with('success', 'You have successfully joined the project.');
 }
+
+public function storeFile(Request $request, $projectId)
+    {
+        $request->validate([
+            'file' => ['required', 'file', 'mimes:jpeg,png,jpg,pdf,doc,docx'],
+        ]);
+
+        $file = $request->file('file');
+        $fileName = $file->getClientOriginalName();
+        $filePath = $file->store('project_files');
+
+        ProjectFile::create([
+            'project_id' => $projectId,
+            'user_id' => Auth::id(),
+            'file_name' => $fileName,
+            'file_path' => $filePath,
+            'file_type' => $file->getClientOriginalExtension(),
+        ]);
+
+        return redirect()->back()->with('success', 'File uploaded successfully.');
+    }
 
 }

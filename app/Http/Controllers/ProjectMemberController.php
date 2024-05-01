@@ -19,4 +19,3 @@ class ProjectMemberController extends Controller
         return redirect()->route('home')->with('success', 'You have successfully joined the project.');
     }
 }
-
