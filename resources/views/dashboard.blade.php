@@ -4,10 +4,20 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot> --}}
+<style>
+.oli{
+    background-image: url('https://vojislavd.com/ta-template-demo/assets/img/auth-background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+}
+</style>
+    <div class="oli flex flex-col justify-center items-center w-[100%] "
+    
+    >
 
-    <div class="flex flex-col justify-center items-center w-[100%] my-5">
-
-        <div class="flex justify-around items-center w-[70%]  max-[430px]:flex-col  max-[430px]:justify-center  max-[430px]:items-center  max-[430px]:gap-6  max-[430px]:w-[100%]">
+        <div class="mt-5 flex justify-around items-center w-[70%]  max-[430px]:flex-col  max-[430px]:justify-center  max-[430px]:items-center  max-[430px]:gap-6  max-[430px]:w-[100%]">
 
             <div class=' max-[430px]:w-[95%]'>
                 <div class='w-full max-w-lg p-6 mx-auto bg-white rounded-2xl shadow-xl flex flex-col'>
