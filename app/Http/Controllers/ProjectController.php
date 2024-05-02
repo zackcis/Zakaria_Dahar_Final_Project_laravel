@@ -40,10 +40,8 @@ class ProjectController extends Controller
         $project->start_date = $request->start_date;
         $project->deadline = $request->deadline;
         if ($request->hasFile('project_picture')) {
-            // Store the uploaded file and get its path
             $projectPicturePath = $request->file('project_picture')->store('project_pictures');
     
-            // Save the image path to the database
             $project->project_picture = $projectPicturePath;
         }
         $project->user_id = Auth::id();

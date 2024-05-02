@@ -100,7 +100,7 @@
                             </div>
                         </div>
                         <!--Body-->
-                        <form method="POST" action="{{ route('projects.store') }}"
+                        <form method="POST" action="{{ route('projects.store') }}" enctype="multipart/form-data" 
                             class="flex flex-col justify-center items-center w-[100%]">
                             @csrf
                             <input id="created_by" type="text" name="created_by" value="{{ Auth::user()->id }}"
@@ -122,7 +122,10 @@
                                 <label for="deadline">Deadline</label>
                                 <input class="bg-zinc-200 text-zinc-600 font-mono ring-1 ring-zinc-400 focus:ring-2 focus:ring-rose-400 outline-none duration-300 placeholder:text-zinc-600 placeholder:opacity-50 rounded-lg px-4 py-1 shadow-md focus:shadow-lg focus:shadow-rose-400" id="deadline" type="date" name="deadline" required autofocus>
                             </div>
-
+                            <div class="my-1 flex flex-col gap-2 justify-center items-center">
+                                <label for="project_picture">Project Picture</label>
+                                <input class="bg-zinc-200 text-zinc-600 font-mono ring-1 ring-zinc-400 focus:ring-2 focus:ring-rose-400 outline-none duration-300 placeholder:text-zinc-600 placeholder:opacity-50 rounded-lg px-4 py-1 shadow-md focus:shadow-lg focus:shadow-rose-400" id="project_picture" type="file" name="project_picture">
+                            </div>
                             <!-- Add input fields for other project attributes (start date, deadline, etc.) as needed -->
 
 
