@@ -105,22 +105,22 @@
                             @csrf
                             <input id="created_by" type="text" name="created_by" value="{{ Auth::user()->id }}"
                                 class="hidden">
-                            <div class="my-3 flex flex-col gap-2 justify-center items-center ">
+                            <div class="my-1 flex flex-col gap-2 justify-center items-center ">
                                 <label for="title">Title</label>
-                                <input id="title" type="text" name="title" required autofocus>
+                                <input class="bg-zinc-200 text-zinc-600 font-mono ring-1 ring-zinc-400 focus:ring-2 focus:ring-rose-400 outline-none duration-300 placeholder:text-zinc-600 placeholder:opacity-50 rounded-lg px-4 py-1 shadow-md focus:shadow-lg focus:shadow-rose-400" id="title" type="text" name="title" required autofocus>
                             </div>
 
-                            <div class="my-3 flex flex-col gap-2 justify-center items-center">
+                            <div class="my-1 flex flex-col gap-2 justify-center items-center">
                                 <label for="description">Description</label>
-                                <textarea id="description" name="description" rows="4" required>{{ old('description') }}</textarea>
+                                <textarea class="bg-zinc-200 text-zinc-600 font-mono ring-1 ring-zinc-400 focus:ring-2 focus:ring-rose-400 outline-none duration-300 placeholder:text-zinc-600 placeholder:opacity-50 rounded-lg px-4 py-1 shadow-md focus:shadow-lg focus:shadow-rose-400" id="description" name="description" rows="4" required>{{ old('description') }}</textarea>
                             </div>
-                            <div class="my-3 flex flex-col gap-2 justify-center items-center ">
+                            <div class="my-1 flex flex-col gap-2 justify-center items-center ">
                                 <label for="start_date">Start date</label>
-                                <input id="start_date" type="date" name="start_date" required autofocus>
+                                <input class="bg-zinc-200 text-zinc-600 font-mono ring-1 ring-zinc-400 focus:ring-2 focus:ring-rose-400 outline-none duration-300 placeholder:text-zinc-600 placeholder:opacity-50 rounded-lg px-4 py-1 shadow-md focus:shadow-lg focus:shadow-rose-400" id="start_date" type="date" name="start_date" required autofocus>
                             </div>
-                            <div class="my-3 flex flex-col gap-2 justify-center items-center ">
+                            <div class="my-1 flex flex-col gap-2 justify-center items-center ">
                                 <label for="deadline">Deadline</label>
-                                <input id="deadline" type="date" name="deadline" required autofocus>
+                                <input class="bg-zinc-200 text-zinc-600 font-mono ring-1 ring-zinc-400 focus:ring-2 focus:ring-rose-400 outline-none duration-300 placeholder:text-zinc-600 placeholder:opacity-50 rounded-lg px-4 py-1 shadow-md focus:shadow-lg focus:shadow-rose-400" id="deadline" type="date" name="deadline" required autofocus>
                             </div>
 
                             <!-- Add input fields for other project attributes (start date, deadline, etc.) as needed -->

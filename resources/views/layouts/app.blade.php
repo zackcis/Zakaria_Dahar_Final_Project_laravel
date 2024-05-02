@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar/index.global.min.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js'></script>
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/fullcalendar@latest/main.min.css' />
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar/index.global.min.js'></script>
 
@@ -37,7 +38,7 @@
         <!-- Page Content -->
         <main class="flex">
             <aside
-                class=" max-[430px]:hidden flex flex-col w-64 min-h-screen px-4 py-8 overflow-y-auto bg-white border-r rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700">
+                class=" max-[430px]:hidden flex flex-col w-80 min-h-screen px-4 py-8 overflow-y-auto  bg-white border-r rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700">
                 <a href="#" class="mx-auto">
                     <img class="w-auto h-6 sm:h-7" src="{{ asset('images/Capture_décran_2024-04-24_120041.png') }}"
                         alt="">
@@ -52,7 +53,7 @@
                 </div>
                 <div class="flex flex-col justify-between flex-1 mt-6">
                     <nav>
-                        <a class="text-decoration-none flex items-center px-4 py-2 text-gray-700 bg-gray-100 rounded-lg dark:bg-gray-800 dark:text-gray-200"
+                        <a class="text-decoration-none flex items-center px-4 py-2 text-gray-700  rounded-lg hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-200"
                             href="{{ route('dashboard') }}">
                             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -98,37 +99,17 @@
 
                             <span class="mx-4 font-medium">Settings</span>
                         </a>
-                        <div class="hidden mt-7 sm:flex sm:items-center sm:ms-6 ">
-                            <x-dropdown align="right" width="48">
-                                <x-slot name="trigger" class="">
-                                    <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
-                                        <div>{{ Auth::user()->name }}</div>
-            
-                                        <div class="ms-1">
-                                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                            </svg>
-                                        </div>
-                                    </button>
-                                </x-slot>
-
-                                <x-slot name="content" class="" >
-                                    <x-dropdown-link :href="route('profile.edit')">
-                                        {{ __('Profile') }}
+                        <div class="sm:flex sm:items-center ">
+                            <x-primary-button class="ms-3  w-full mt-5">
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <x-dropdown-link class="text-decoration-none text-white hover:bg-[#374151] w-full p-0 m-0" :href="route('logout')"
+                                        onclick="event.preventDefault();
+                                                        this.closest('form').submit();">
+                                        Log out
                                     </x-dropdown-link>
-            
-                                    <!-- Authentication -->
-                                    <form method="POST" action="{{ route('logout') }}">
-                                        @csrf
-            
-                                        <x-dropdown-link :href="route('logout')"
-                                                onclick="event.preventDefault();
-                                                            this.closest('form').submit();">
-                                            {{ __('Log Out') }}
-                                        </x-dropdown-link>
-                                    </form>
-                                </x-slot>
-                            </x-dropdown>
+                                </form>
+                            </x-primary-button>
                         </div>
                     </nav>
                 </div>

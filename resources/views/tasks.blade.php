@@ -148,28 +148,28 @@
                             class="flex flex-col justify-center gap-3 items-center w-[100%]">
                             @csrf
 
-                            <div class="my-3 flex flex-col justify-center items-center">
+                            <div class="my-1 flex flex-col justify-center items-center">
                                 <label for="title">Title</label>
-                                <input id="title" type="text" name="title" required autofocus>
+                                <input class="bg-zinc-200 text-zinc-600 font-mono ring-1 ring-zinc-400 focus:ring-2 focus:ring-rose-400 outline-none duration-300 placeholder:text-zinc-600 placeholder:opacity-50 rounded-lg px-4 py-1 shadow-md focus:shadow-lg focus:shadow-rose-400"  id="title" type="text" name="title" required autofocus>
                             </div>
-                            <div class="my-3 flex flex-col justify-center items-center">
+                            <div class="my-1 flex flex-col justify-center items-center">
                                 <label for="description">Description</label>
-                                <textarea id="description" name="description" rows="4" required></textarea>
+                                <textarea class="bg-zinc-200 text-zinc-600 font-mono ring-1 ring-zinc-400 focus:ring-2 focus:ring-rose-400 outline-none duration-300 placeholder:text-zinc-600 placeholder:opacity-50 rounded-lg px-4 py-1 shadow-md focus:shadow-lg focus:shadow-rose-400"  id="description" name="description" rows="4" required></textarea>
                             </div>
-                            <div class="my-3 flex flex-col justify-center items-center">
+                            <div class="my-1 flex flex-col justify-center items-center">
                                 <label for="priority">Priority</label>
-                                <select name="priority" id="priority">
-                                    <option value="urgent">urgent</option>
+                                <select class="bg-zinc-200 text-zinc-600 font-mono ring-1 ring-zinc-400 focus:ring-2 focus:ring-rose-400 outline-none duration-300 placeholder:text-zinc-600 placeholder:opacity-50 rounded-lg px-4 py-1 shadow-md focus:shadow-lg focus:shadow-rose-400"  name="priority" id="priority">
                                     <option value="normal">normal</option>
+                                    <option value="urgent">urgent</option>
                                 </select>
                             </div>
-                            <div class="my-3 flex flex-col justify-center items-center">
+                            <div class="my-1 flex flex-col justify-center items-center">
                                 <label for="start_date">start_date</label>
-                                <input id="start_date" type="date" name="start_date" required>
+                                <input class="bg-zinc-200 text-zinc-600 font-mono ring-1 ring-zinc-400 focus:ring-2 focus:ring-rose-400 outline-none duration-300 placeholder:text-zinc-600 placeholder:opacity-50 rounded-lg px-4 py-1 shadow-md focus:shadow-lg focus:shadow-rose-400"  id="start_date" type="date" name="start_date" required>
                             </div>
-                            <div class="my-3 flex flex-col justify-center items-center">
+                            <div class="my-1 flex flex-col justify-center items-center">
                                 <label for="deadline">Deadline</label>
-                                <input id="deadline" type="date" name="deadline" required>
+                                <input class="bg-zinc-200 text-zinc-600 font-mono ring-1 ring-zinc-400 focus:ring-2 focus:ring-rose-400 outline-none duration-300 placeholder:text-zinc-600 placeholder:opacity-50 rounded-lg px-4 py-1 shadow-md focus:shadow-lg focus:shadow-rose-400"  id="deadline" type="date" name="deadline" required>
                             </div>
                             {{-- 
                             <div class="my-3 flex flex-col justify-center items-center hidden">

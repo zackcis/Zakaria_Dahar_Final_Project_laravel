@@ -63,8 +63,8 @@
     <form action="{{ route('user.updateImage') }}" method="POST" enctype="multipart/form-data" class="mt-6 space-y-6">
         @csrf
         <div>
-            <label for="image">Select Image:</label>
-            <input type="file" name="image" id="image" accept="image/*">
+            <label class="text-sm text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="image">Select Image:</label>
+            <input class="flex w-full rounded-md border border-blue-300 border-input bg-white text-sm text-gray-400 file:border-0 file:bg-blue-600 file:text-white file:text-sm file:font-medium" type="file" name="image" id="image" accept="image/*">
         </div>
 
         <x-primary-button type="submit">{{ __('Upload Image') }}</x-primary-button>

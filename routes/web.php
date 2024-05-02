@@ -8,9 +8,11 @@ use App\Http\Controllers\ProjectMemberController;
 use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/', [RegisteredUserController::class, 'create'])->name('register');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

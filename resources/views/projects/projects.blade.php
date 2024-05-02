@@ -8,7 +8,7 @@
             width: 100%;
         }
     </style>
-    <div class="oli w-[100%] flex flex-col items-center ">
+    <div class="oli w-[100%] flex flex-col items-center overflow-x-hidden ">
 
         <div class=" w-[70%] p-4 rounded-lg hidden">
             <table class="table">
@@ -45,7 +45,7 @@
                         class="relative flex w-full max-w-[26rem] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg my-3">
                         <div
                             class="relative mx-4 mt-4 overflow-hidden rounded-xl bg-blue-gray-500 bg-clip-border text-white shadow-lg shadow-blue-gray-500/40">
-                            <img src="https://images.unsplash.com/photo-1499696010180-025ef6e1a8f9?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1470&amp;q=80"
+                            <img src="https://images.inc.com/uploaded_files/image/1920x1080/getty_533991320_352162.jpg"
                                 alt="ui/ux review check" />
                             <div
                                 class="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-tr from-transparent via-transparent to-black/60">
@@ -84,10 +84,13 @@
                                 {{ $project->description }}
                             </p>
                             <p class="block font-sans text-base font-light leading-relaxed text-gray-700 antialiased my-2">
-                                Start Date :{{ $project->start_date }}
+                                <b class="font-bold">Members : </b>{{ $project->members->count() }}
                             </p>
                             <p class="block font-sans text-base font-light leading-relaxed text-gray-700 antialiased my-2">
-                                Deadline : {{ $project->deadline }}
+                                <b class="font-bold">Start Date :</b>{{ $project->start_date }}
+                            </p>
+                            <p class="block font-sans text-base font-light leading-relaxed text-gray-700 antialiased my-2">
+                                <b class="font-bold">Deadline :</b> {{ $project->deadline }}
                             </p>
                             {{-- <div class="group mt-8 inline-flex flex-wrap items-center gap-3">
                         <span data-tooltip-target="money"
