@@ -95,7 +95,6 @@
                     <div class="flex items-center justify-center space-x-2">
 
                         <img src="{{ asset('images/logoni.png') }}" alt="">
-
                     </div>
 
                     <a href="#"

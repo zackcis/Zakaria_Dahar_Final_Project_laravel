@@ -85,6 +85,11 @@
                             <span class="mx-4 font-medium">Calendar</span>
                         </a>
                         <a class="text-decoration-none flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
+                        href="{{ route('chatify') }}">
+                        <i class="fa-regular fa-comment-dots"></i>
+                        <span class="mx-4 font-medium">Chat</span>
+                    </a>
+                        <a class="text-decoration-none flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
                             href="{{ route('profile.edit') }}">
                             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path

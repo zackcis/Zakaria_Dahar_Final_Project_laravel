@@ -146,7 +146,7 @@
                             @csrf
                             <div class="my-3 flex flex-col gap-2 justify-center items-center">
                                 <label for="email">Email Address</label>
-                                <input id="email" type="email" name="email" required>
+                                <input class="bg-zinc-200 text-zinc-600 font-mono ring-1 ring-zinc-400 focus:ring-2 focus:ring-rose-400 outline-none duration-300 placeholder:text-zinc-600 placeholder:opacity-50 rounded-lg px-4 py-1 shadow-md focus:shadow-lg focus:shadow-rose-400"  id="email" type="email" name="email" required>
                             </div>
                             <div class="flex justify-end items-center gap-3">
                                 <button type="submit"
@@ -162,7 +162,7 @@
             <div class="main-modal task-modal fixed w-full h-100 inset-0 z-50 overflow-hidden flex justify-center items-center animated fadeIn hidden faster"
                 style="background: rgba(0,0,0,.7);">
                 <div
-                    class="border border-teal-500 shadow-lg modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+                    class="border border-teal-500 modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
                     <div class="modal-content py-4 text-left px-6">
                         <!--Title-->
                         <div class="flex justify-between items-center pb-3">
@@ -181,33 +181,33 @@
                             class="flex flex-col justify-center gap-3 items-center w-[100%]">
                             @csrf
 
-                            <div class="my-3 flex flex-col justify-center items-center">
+                            <div class="my-1 flex flex-col justify-center items-center">
                                 <label for="title">Title</label>
-                                <input id="title" type="text" name="title" required autofocus>
+                                <input class="bg-zinc-200 text-zinc-600 font-mono ring-1 ring-zinc-400 focus:ring-2  outline-none duration-300 placeholder:text-zinc-600 placeholder:opacity-50 rounded-lg px-4 py-1 shadow-md focus:shadow-lg focus:shadow-rose-400"  id="title" type="text" name="title" required autofocus>
                             </div>
-                            <div class="my-3 flex flex-col justify-center items-center">
+                            <div class="my-1 flex flex-col justify-center items-center">
                                 <label for="description">Description</label>
-                                <textarea id="description" name="description" rows="4" required></textarea>
+                                <textarea class="bg-zinc-200 text-zinc-600 font-mono ring-1 ring-zinc-400 focus:ring-2  outline-none duration-300 placeholder:text-zinc-600 placeholder:opacity-50 rounded-lg px-4 py-1 shadow-md focus:shadow-lg "  id="description" name="description" rows="4" required></textarea>
                             </div>
-                            <div class="my-3 flex flex-col justify-center items-center">
+                            <div class="my-1 flex flex-col justify-center items-center">
                                 <label for="priority">Priority</label>
-                                <select name="priority" id="priority">
+                                <select class="bg-zinc-200 text-zinc-600 font-mono ring-1 ring-zinc-400 focus:ring-2  outline-none duration-300 placeholder:text-zinc-600 placeholder:opacity-50 rounded-lg px-4 py-1 shadow-md focus:shadow-lg "  name="priority" id="priority">
                                     <option value="urgent">urgent</option>
                                     <option value="normal">normal</option>
                                 </select>
                             </div>
-                            <div class="my-3 flex flex-col justify-center items-center">
+                            <div class="my-1 flex flex-col justify-center items-center">
                                 <label for="start_date">start_date</label>
-                                <input id="start_date" type="date" name="start_date" required>
+                                <input class="bg-zinc-200 text-zinc-600 font-mono ring-1 ring-zinc-400 focus:ring-2  outline-none duration-300 placeholder:text-zinc-600 placeholder:opacity-50 rounded-lg px-4 py-1 shadow-md focus:shadow-lg "  id="start_date" type="date" name="start_date" required>
                             </div>
-                            <div class="my-3 flex flex-col justify-center items-center">
+                            <div class="my-1 flex flex-col justify-center items-center">
                                 <label for="deadline">Deadline</label>
-                                <input id="deadline" type="date" name="deadline" required>
+                                <input class="bg-zinc-200 text-zinc-600 font-mono ring-1 ring-zinc-400 focus:ring-2  outline-none duration-300 placeholder:text-zinc-600 placeholder:opacity-50 rounded-lg px-4 py-1 shadow-md focus:shadow-lg "  id="deadline" type="date" name="deadline" required>
                             </div>
 
-                            <div class="my-3 flex flex-col justify-center items-center hidden">
+                            <div class="my-1 flex flex-col justify-center items-center hidden">
                                 <label for="project_id">Project</label>
-                                <select id="project_id" name="project_id">
+                                <select class="bg-zinc-200 text-zinc-600 font-mono ring-1 ring-zinc-400 focus:ring-2 focus:ring-rose-400 outline-none duration-300 placeholder:text-zinc-600 placeholder:opacity-50 rounded-lg px-4 py-1 shadow-md focus:shadow-lg "  id="project_id" name="project_id">
 
                                     <option value="{{ $project->id }}">{{ $project->title }}</option>
 
