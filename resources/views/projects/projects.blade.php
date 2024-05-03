@@ -42,10 +42,10 @@
             @foreach ($projects as $project)
                 @if ($project->members->contains('id', Auth::user()->id))
                     <div
-                        class="relative flex w-full max-w-[26rem] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg my-3">
+                        class="relative h-[50vh] flex w-full max-w-[26rem] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg my-3">
                         <div
                             class="relative mx-4 mt-4 overflow-hidden rounded-xl bg-blue-gray-500 bg-clip-border text-white shadow-lg shadow-blue-gray-500/40">
-                            <img  src="{{ asset('project_pictures/' . $project->project_picture) }}" alt="Project Picture">
+                            <img  src="{{ asset('storage/' . $project->project_picture) }}" alt="Project Picture">
                                 
                             <div
                                 class="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-tr from-transparent via-transparent to-black/60">
@@ -64,7 +64,7 @@
                             </button>
                         </div>
                         <div class="px-4 pt-2">
-                            <div class="mb-3 flex items-center justify-between">
+                            <div class="flex items-center justify-between">
                                 <h5
                                     class="block font-sans text-xl font-medium leading-snug tracking-normal text-blue-gray-900 antialiased">
                                     {{ $project->title }}
