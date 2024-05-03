@@ -24,7 +24,7 @@
                         <h2 id="currentMonth" class="text-white"></h2>
                         <button id="nextMonth" class="text-white">Next</button>
                     </div>
-                    <div class="grid grid-cols-7 gap-2 p-2" id="calendar">
+                    <div class="grid grid-cols-7 gap-2 p-2 lg:h-72" id="calendar">
                         <!-- Calendar Days Go Here -->
                     </div>
                     <div id="myModal" class="modal hidden fixed inset-0 flex items-center justify-center z-50">
@@ -82,6 +82,7 @@
                     </table>
                 </div>
             </div>
+            
             <div class="main-modal project-modal fixed w-full h-100 inset-0 z-50 overflow-hidden flex justify-center items-center animated fadeIn hidden faster"
                 style="background: rgba(0,0,0,.7);">
                 <div
@@ -116,11 +117,11 @@
                             </div>
                             <div class="my-1 flex flex-col gap-2 justify-center items-center ">
                                 <label for="start_date">Start date</label>
-                                <input class="bg-zinc-200 text-zinc-600 font-mono ring-1 ring-zinc-400 focus:ring-2 focus:ring-rose-400 outline-none duration-300 placeholder:text-zinc-600 placeholder:opacity-50 rounded-lg px-4 py-1 shadow-md focus:shadow-lg focus:shadow-rose-400" id="start_date" type="date" name="start_date" required autofocus>
+                                <input required class="bg-zinc-200 text-zinc-600 font-mono ring-1 ring-zinc-400 focus:ring-2 focus:ring-rose-400 outline-none duration-300 placeholder:text-zinc-600 placeholder:opacity-50 rounded-lg px-4 py-1 shadow-md focus:shadow-lg focus:shadow-rose-400" id="start_date" type="date" name="start_date" required autofocus>
                             </div>
                             <div class="my-1 flex flex-col gap-2 justify-center items-center ">
                                 <label for="deadline">Deadline</label>
-                                <input class="bg-zinc-200 text-zinc-600 font-mono ring-1 ring-zinc-400 focus:ring-2 focus:ring-rose-400 outline-none duration-300 placeholder:text-zinc-600 placeholder:opacity-50 rounded-lg px-4 py-1 shadow-md focus:shadow-lg focus:shadow-rose-400" id="deadline" type="date" name="deadline" required autofocus>
+                                <input required class="bg-zinc-200 text-zinc-600 font-mono ring-1 ring-zinc-400 focus:ring-2 focus:ring-rose-400 outline-none duration-300 placeholder:text-zinc-600 placeholder:opacity-50 rounded-lg px-4 py-1 shadow-md focus:shadow-lg focus:shadow-rose-400" id="deadline" type="date" name="deadline" required autofocus>
                             </div>
                             <div class="my-1 flex flex-col gap-2 justify-center items-center">
                                 <label for="project_picture">Project Picture</label>
@@ -523,6 +524,9 @@
             document.getElementById('closeModal').addEventListener('click', () => {
                 hideModal();
             });
+
+
+            
         </script>
     </div>
 </x-app-layout>

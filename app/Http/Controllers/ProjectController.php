@@ -26,10 +26,34 @@ class ProjectController extends Controller
             'title' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string'],
             'created_by' => ['required', 'integer'],
-            'start_date' => ['required', 'date'],
-            'deadline' => ['required', 'date', 'after_or_equal:start_date'],
-            'project_picture' => ['image', 'mimes:jpeg,png,jpg,gif', 'max:2048'], // Max file size: 2MB
+            'start_date' => ['required', 'date', 'after_or_equal:today',
+        
+            function ($attribute, $value, $fail) use ($request) {
 
+                $today = now()->format('Y-m-d');
+                if ($value < $today) {
+                    $request->session()->flash('error', 'Start date must be today or later.');
+                }
+            },
+        ], 
+            'deadline' => [
+                'required',
+                'date',
+                'after_or_equal:start_date',
+                function ($attribute, $value, $fail) use ($request) {
+
+                    $startDate = $request->input('start_date');
+                    $maxDeadline = date('Y-m-d', strtotime($startDate . ' +1 year'));
+                    if ($value > $maxDeadline) {
+                        return redirect()->back()->with('error', 'Failed to create project. Please try again.');
+                    }
+                    if ($value < $startDate) {
+                        return redirect()->back()->with('error', 'the deadline date should be after the start');
+                    }
+                    
+                },
+            ],
+            'project_picture' => ['image', 'mimes:jpeg,png,jpg,gif', 'max:2048'], // Max file size: 2MB
         ]);
 
         $project = new Project();
@@ -57,7 +81,7 @@ class ProjectController extends Controller
         ]);
         $project = Project::findOrFail($projectId);
         Mail::to($validatedData['email'])->send(new ProjectInvitation($project));
-        return redirect()->back();
+        return redirect()->back()->with('success', 'You have successfully snt the invitation');
     }
     public function joinProject($projectId)
 {

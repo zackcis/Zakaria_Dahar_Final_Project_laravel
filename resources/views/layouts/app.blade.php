@@ -7,9 +7,11 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="https://unpkg.com/@material-tailwind/html@latest/styles/material-tailwind.css" />
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Zentasks</title>
     <!-- Fonts -->
-
+    <link rel="icon" 
+    type="image/png" 
+    href="https://icons.veryicon.com/png/o/miscellaneous/itsm-management/task-management-8.png">
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
