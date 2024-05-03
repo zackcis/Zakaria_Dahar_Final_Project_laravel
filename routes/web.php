@@ -35,6 +35,8 @@ Route::middleware('auth')->group(function () {
     // ! Task
     Route::get('/tasks', [TaskController::class, 'index'])->name('tasks.index');
     Route::post('/tasks/store', [TaskController::class, 'store'])->name('tasks.store');
+    Route::post('/tasks/{task}/update-status', [TaskController::class, 'updateStatus']);
+
 
     // &Calendar
     Route::get('/calendar',[CalendarController::class, 'index'])->name('calendar.index');

@@ -3,11 +3,15 @@
 <html lang="en">
 
 <head>
+    <link rel="icon" 
+    type="image/png" 
+    href="https://icons.veryicon.com/png/o/miscellaneous/itsm-management/task-management-8.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <title>Zentasks</title>
 </head>
 
 <body>
@@ -89,9 +93,7 @@
                     </form>
 
                     <div class="flex items-center justify-between">
-                        <div class="w-full h-[1px] bg-gray-300"></div>
-                        <span class="text-sm uppercase mx-6 text-gray-400">Or</span>
-                        <div class="w-full h-[1px] bg-gray-300"></div>
+
                     </div>
 
                     <div class="text-sm flex justify-center items-center">

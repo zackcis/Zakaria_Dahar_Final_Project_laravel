@@ -1,5 +1,5 @@
 <x-mail::message>
-# Introduction
+# Invitation
 
 {{ Auth::user()->name }} has invited you to join {{ $project->title}} project
 
@@ -11,5 +11,5 @@
 </x-mail::button>
 
 Thanks,<br>
-{{ config('app.name') }}
+Zentasks
 </x-mail::message>

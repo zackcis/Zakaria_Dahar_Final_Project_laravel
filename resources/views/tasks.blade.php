@@ -115,10 +115,43 @@
             background: rgb(50, 50, 50);
             color: white;
         }
+
+        .twelve h1 {
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            width: 160px;
+            text-align: center;
+            margin: auto;
+            white-space: nowrap;
+            padding-bottom: 13px;
+        }
+
+        .twelve h1:before {
+            background-color: #c50000;
+            content: '';
+            display: block;
+            height: 3px;
+            width: 75px;
+            margin-bottom: 5px;
+        }
+
+        .twelve h1:after {
+            background-color: #c50000;
+            content: '';
+            display: block;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            height: 3px;
+            width: 75px;
+            margin-top: 5px;
+        }
     </style>
     <div class="all w-full">
         <div class="board">
-            <div class="w-[100%]">
+            <div class="w-[100%] twelve mt-3">
                 <h1 class="text-center text-white my-6"><b>Personal Tasks</b></h1>
             </div>
             <form id="todo-form">

@@ -65,4 +65,15 @@ class TaskController extends Controller
         $task->save();
         return redirect()->back()->with('success', 'Task created successfully.');;
     }
+    public function updateStatus(Task $task, Request $request)
+    {
+        $request->validate([
+            'status' => ['required', 'in:TODO,DOING,DONE'], // Define allowed status values
+        ]);
+
+        $task->status = $request->status;
+        $task->save();
+
+        return response()->json(['message' => 'Task status updated successfully']);
+    }
 }
