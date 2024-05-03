@@ -8,7 +8,6 @@
             width: 100%;
 
         }
-
     </style>
     <div class="oli w-[100%] flex justify-center items-center">
 
@@ -59,6 +58,18 @@
                                 },
                             @endif
                         @endforeach
+                        @foreach ($independentTasks as $task)
+                            @if ($task->project_id === null && $task->user_id === Auth::id())
+                                @php
+                                    $color = $task->priority === 'urgent' ? 'red' : 'blue';
+                                @endphp {
+                                    title: '{{ $task->title }}',
+                                    start: '{{ $task->start_date }}',
+                                    end: '{{ $task->deadline }}',
+                                    color: '{{ $color }}'
+                                },
+                            @endif
+                        @endforeach
                     ],
                 });
 
@@ -69,20 +80,22 @@
         });
     </script>
     <style>
-        .fc-header-toolbar .fc-prev-button{
+        .fc-header-toolbar .fc-prev-button {
             margin-left: 10px;
             margin-right: 10px;
             margin-top: 10px;
 
         }
-        .fc-header-toolbar .fc-next-button{
+
+        .fc-header-toolbar .fc-next-button {
             margin-top: 10px;
         }
+
         @media (max-width: 430px) {
 
             .fc-header-toolbar .fc-listMonth-button,
             .fc-header-toolbar .fc-listWeek-button,
-            .fc-header-toolbar .fc-listDay-button ,
+            .fc-header-toolbar .fc-listDay-button,
             .fc-header-toolbar .fc-timeGridWeek-button,
             .fc-header-toolbar .fc-timeGridDay-button,
             .fc-header-toolbar .fc-dayGridMonth-button {
