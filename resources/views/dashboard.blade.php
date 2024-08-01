@@ -16,7 +16,7 @@
     <div class="oli flex flex-col justify-center items-center w-[100%] ">
 
         <div
-            class="mt-5 flex justify-around items-center w-[70%]  max-[430px]:flex-col   max-[430px]:justify-center  max-[430px]:items-center  max-[430px]:gap-6  max-[430px]:w-[100%]">
+            class="mt-5 flex justify-around items-center w-[90%] gap-8   max-[430px]:flex-col   max-[430px]:justify-center  max-[430px]:items-center  max-[430px]:gap-6  max-[430px]:w-[100%]">
             <div class="lg:w-6/12 md:w-9/12 sm:w-10/12 mx-auto ">
                 <div class="bg-white shadow-lg rounded-lg overflow-hidden">
                     <div class="flex items-center justify-between px-4 py-3 bg-gray-700">
