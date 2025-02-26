@@ -24,8 +24,12 @@ php artisan migrate
 6. **install npm dependencies**
 npm install
 7. **create storage link**
+php artisan storage:link 
+OR 
+rm public/storage
 php artisan storage:link
-8. **compile assets**
+in case pictures not appears
+9. **compile assets**
 npm run dev
-9. **Run the development server**
+10. **Run the development server**
 php artisan server
